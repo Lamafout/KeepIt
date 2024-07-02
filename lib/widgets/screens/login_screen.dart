@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../osa_sign_button.dart';
 import '../osa_sign_input.dart';
 import '../osa_sign_title.dart';
+import '../../requests/username_request.dart';
 
 // consts of sizes of params of widgets
 const columnPadding = 40.0;
@@ -17,8 +18,9 @@ class LogInScreen extends StatefulWidget {
 class _LogInScreenState extends State<LogInScreen> {
   TextEditingController loginController = TextEditingController();
   bool buttonState = false;
-  void _sendUsername(){
-
+  bool isFound = false;
+  void _sendUsername() async{
+    isFound = await sendUsername(inputUsername: loginController.text);
   }
 
   void initState(){
@@ -54,7 +56,7 @@ class _LogInScreenState extends State<LogInScreen> {
             SizedBox(height: 20),
             OsaSignInput(controller: loginController, hint: 'username'),
             SizedBox(height: 20),
-            OsaSignButton(doSomething: (){}, labelText: 'Continue', isEnable: buttonState)
+            OsaSignButton(doSomething: _sendUsername, labelText: 'Continue', isEnable: buttonState)
           ],
         ),
       ),
