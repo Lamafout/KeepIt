@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
-final inputPaddingValue = 20.0;
+final inputPaddingValue = 10.0;
 final inputRadiusValue = 30.0;
 
 class OsaSignInput extends StatelessWidget {
   final TextEditingController controller;
+  final String hint;
   void sendInputed(){
     print(controller.text);
   }
 
-  OsaSignInput({required this.controller});
+  OsaSignInput({required this.controller, required this.hint});
 
   @override
   Widget build(BuildContext context) {
@@ -30,11 +31,14 @@ class OsaSignInput extends StatelessWidget {
             borderRadius: BorderRadius.all(Radius.circular(inputRadiusValue))
           ),
 
-          contentPadding: EdgeInsets.all(inputPaddingValue),
+          contentPadding: EdgeInsets.symmetric(
+            horizontal: inputPaddingValue,
+            vertical: inputPaddingValue * 1.5
+          ),
           //hint
-          hintText: 'username',
+          hintText: hint,
           hintStyle: TextStyle(
-            color: Color.fromARGB(255, 79, 79, 79),
+            color: Color.fromARGB(255, 92, 92, 92),
             fontWeight: FontWeight.w300
           ),
           filled: true,

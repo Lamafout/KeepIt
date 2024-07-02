@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import './widgets/osa_sign_input.dart';
 import './widgets/osa_sign_button.dart';
+import './widgets/osa_sign_title.dart';
 
 void main() {
   runApp(const MyApp());
@@ -33,7 +34,8 @@ class _CoreWidgetState extends State<CoreWidget> {
             mainAxisAlignment: MainAxisAlignment.center,
 
             children: [
-              OsaSignInput(controller: TextEditingController()),
+              OsaSignTitle(titleText: 'Hi 👋 Who are you?'),
+              OsaSignInput(controller: TextEditingController(), hint: 'username',),
               OsaSignButton(doSomething: (){}, labelText: 'Send',),
             ],
           ),
