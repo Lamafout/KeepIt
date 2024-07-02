@@ -27,9 +27,9 @@ class _CoreWidgetState extends State<CoreWidget> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Color(0x1b1b1b),
+        backgroundColor: Color.fromARGB(255, 28, 28, 28),
         body: Center(
-          child: OsaSignInput(),
+          child: OsaSignInput(controller: TextEditingController()),
         ),
       ),
     );
