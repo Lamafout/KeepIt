@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import './widgets/osa_sign_input.dart';
+import './widgets/osa_sign_button.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,9 +29,14 @@ class _CoreWidgetState extends State<CoreWidget> {
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Color.fromARGB(255, 28, 28, 28),
-        body: Center(
-          child: OsaSignInput(controller: TextEditingController()),
-        ),
+        body: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+
+            children: [
+              OsaSignInput(controller: TextEditingController()),
+              OsaSignButton(doSomething: (){}, labelText: 'Send',),
+            ],
+          ),
       ),
     );
   }
