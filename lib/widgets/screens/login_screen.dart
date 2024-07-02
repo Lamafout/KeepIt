@@ -16,7 +16,27 @@ class LogInScreen extends StatefulWidget {
 
 class _LogInScreenState extends State<LogInScreen> {
   TextEditingController loginController = TextEditingController();
- 
+  bool buttonState = false;
+  void _sendUsername(){
+
+  }
+
+  void initState(){
+    super.initState();
+    loginController.addListener(_changeButtonState);
+  }
+
+  void _changeButtonState(){
+    setState(() {
+      if (loginController.text==''){
+        buttonState = false;
+      }
+      else{
+        buttonState = true;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +54,7 @@ class _LogInScreenState extends State<LogInScreen> {
             SizedBox(height: 20),
             OsaSignInput(controller: loginController, hint: 'username'),
             SizedBox(height: 20),
-            OsaSignButton(doSomething: (){}, labelText: 'Continue')
+            OsaSignButton(doSomething: (){}, labelText: 'Continue', isEnable: buttonState)
           ],
         ),
       ),
