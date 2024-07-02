@@ -28,15 +28,15 @@ class _NetworksScreenState extends State<NetworksScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
 
           children: [
-            OsaSignTitle(titleText: 'We need to verify your account 🔎'),
+            OsaSignTitle(titleText: 'Let\'s verify your account 🔎'),
             SizedBox(height: gap),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
 
               children: [
-                OsaSignIcon(icon: FontAwesomeIcons.telegram, doSomething: (){}),
-                SizedBox(width: gap),
-                OsaSignIcon(icon: FontAwesomeIcons.envelope, doSomething: (){}),
+                OsaSignIcon(icon: FontAwesomeIcons.telegram, doSomething: (){}, iconName: 'use telegram',),
+                SizedBox(width: gap*2),
+                OsaSignIcon(icon: FontAwesomeIcons.envelope, doSomething: (){}, iconName: 'use email',),
               ],
             )
           ],
