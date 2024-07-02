@@ -35,7 +35,7 @@ class OsaSignInput extends StatelessWidget {
           hintText: 'username',
           hintStyle: TextStyle(
             color: Color.fromARGB(255, 79, 79, 79),
-            fontWeight: FontWeight.w400
+            fontWeight: FontWeight.w300
           ),
           filled: true,
           fillColor: Color.fromARGB(255, 51, 51, 51),

@@ -10,25 +10,32 @@ class OsaSignButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: TextButton(
-        onPressed: doSomething(),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
 
-        
-
-        style: TextButton.styleFrom(
-          backgroundColor: Colors.white,
-          padding: EdgeInsets.symmetric(
-            horizontal: buttonPaddingValue * 7,
-            vertical: buttonPaddingValue
-          )
-        ),
-        child: Text(
-          labelText,
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 18
+        children: [
+          Expanded(
+            child: TextButton(
+              onPressed: doSomething(),
+            
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.white,
+                padding: EdgeInsets.symmetric(
+                  horizontal: buttonPaddingValue * 7,
+                  vertical: buttonPaddingValue
+                )
+              ),
+              child: Text(
+                labelText,
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w300
+                ),
+              ),
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
