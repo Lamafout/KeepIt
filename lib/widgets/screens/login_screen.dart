@@ -4,6 +4,8 @@ import '../osa_sign_button.dart';
 import '../osa_sign_input.dart';
 import '../osa_sign_title.dart';
 import '../../requests/username_request.dart';
+import './password_screen.dart';
+import './networks_screen.dart';
 
 // consts of sizes of params of widgets
 const columnPadding = 40.0;
@@ -41,13 +43,23 @@ class _LogInScreenState extends State<LogInScreen> {
 
   void _sendUsername() async {
     isFound = await sendUsername(inputUsername: loginController.text);
-    // Дополнительная обработка результата, если нужно
+    if (isFound){
+      Navigator.push(context, MaterialPageRoute(builder: (context) => PasswordScreen()));
+    } else{
+      Navigator.push(context, MaterialPageRoute(builder: (context) => NetworksScreen()));
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 28, 28, 28),
+       appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 28, 28, 28),
+        iconTheme: IconThemeData(
+          color: Colors.white
+        ),
+      ),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: columnPadding),
         child: Column(

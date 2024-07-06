@@ -21,6 +21,12 @@ class _PasswordScreenState extends State<PasswordScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 28, 28, 28),
+       appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 28, 28, 28),
+        iconTheme: IconThemeData(
+          color: Colors.white
+        ),
+      ),
       body: Container(
       padding: EdgeInsets.symmetric(
         horizontal: columnPadding
