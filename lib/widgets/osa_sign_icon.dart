@@ -13,7 +13,7 @@ class OsaSignIcon extends StatelessWidget {
       child: Column(
         children: [
           IconButton(
-            onPressed: (){},
+            onPressed: () => doSomething,
             icon: FaIcon(
               icon,
               color: Colors.white,

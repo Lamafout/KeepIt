@@ -16,6 +16,10 @@ class PasswordScreen extends StatefulWidget {
 
 class _PasswordScreenState extends State<PasswordScreen> {
   final TextEditingController passwordController = TextEditingController();
+  void _sendPaswword(){
+
+  }
+  bool isCorrect = false;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +44,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
           SizedBox(height: 20),
           OsaSignInput(controller: passwordController, hint: 'password'),
           SizedBox(height: 20),
-          OsaSignButton(doSomething: (){}, labelText: 'Continue')
+          OsaSignButton(doSomething: _sendPaswword, labelText: 'Continue')
         ]
       ),
     ),
