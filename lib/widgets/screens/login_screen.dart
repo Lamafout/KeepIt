@@ -19,24 +19,29 @@ class _LogInScreenState extends State<LogInScreen> {
   TextEditingController loginController = TextEditingController();
   bool buttonState = false;
   bool isFound = false;
-  void _sendUsername() async{
-    isFound = await sendUsername(inputUsername: loginController.text);
-  }
 
-  void initState(){
+  @override
+  void initState() {
     super.initState();
     loginController.addListener(_changeButtonState);
   }
 
-  void _changeButtonState(){
+  @override
+  void dispose() {
+    loginController.removeListener(_changeButtonState);
+    loginController.dispose();
+    super.dispose();
+  }
+
+  void _changeButtonState() {
     setState(() {
-      if (loginController.text==''){
-        buttonState = false;
-      }
-      else{
-        buttonState = true;
-      }
+      buttonState = loginController.text.isNotEmpty;
     });
+  }
+
+  void _sendUsername() async {
+    isFound = await sendUsername(inputUsername: loginController.text);
+    // Дополнительная обработка результата, если нужно
   }
 
   @override
@@ -44,19 +49,19 @@ class _LogInScreenState extends State<LogInScreen> {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 28, 28, 28),
       body: Container(
-        padding: EdgeInsets.symmetric(
-          horizontal: columnPadding
-        ),
-
+        padding: EdgeInsets.symmetric(horizontal: columnPadding),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          
           children: [
             OsaSignTitle(titleText: 'Hi 👋 Who are you?'),
             SizedBox(height: 20),
             OsaSignInput(controller: loginController, hint: 'username'),
             SizedBox(height: 20),
-            OsaSignButton(doSomething: _sendUsername, labelText: 'Continue', isEnable: buttonState)
+            OsaSignButton(
+              doSomething: _sendUsername,
+              labelText: 'Continue',
+              isEnable: buttonState,
+            ),
           ],
         ),
       ),

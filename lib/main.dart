@@ -28,7 +28,7 @@ class _CoreWidgetState extends State<CoreWidget> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: NetworksScreen(),
+      home: LogInScreen(),
     );
   }
 }
