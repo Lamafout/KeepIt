@@ -19,13 +19,14 @@ class LogInScreen extends StatefulWidget {
 }
 
 class _LogInScreenState extends State<LogInScreen> {
-  TextEditingController loginController = controllers.usernameController;
+  late TextEditingController loginController;
   bool buttonState = false;
   int isFound = 0;
 
   @override
   void initState() {
     super.initState();
+    loginController= controllers.usernameController;
     loginController.addListener(_changeButtonState);
   }
 
@@ -68,6 +69,7 @@ class _LogInScreenState extends State<LogInScreen> {
               labelText: 'Continue',
               isEnable: buttonState,
             ),
+            SizedBox(height: 20),
           ],
         ),
       ),

@@ -44,7 +44,8 @@ class _NetworksScreenState extends State<NetworksScreen> {
                 SizedBox(width: gap*2),
                 OsaSignIcon(icon: FontAwesomeIcons.envelope, doSomething: (){}, iconName: 'use email',),
               ],
-            )
+            ),
+            SizedBox(height: 20),
           ],
         ),
       ),

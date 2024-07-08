@@ -17,7 +17,7 @@ class VerifyScreen extends StatefulWidget {
 }
 
 class _VerifyScreenState extends State<VerifyScreen> {
-  final TextEditingController verifyController = controllers.codeController;
+  late TextEditingController verifyController;
   bool _buttonState = false;
   bool _isCorrect = false;
   void _sendVerify() async{
@@ -31,6 +31,7 @@ class _VerifyScreenState extends State<VerifyScreen> {
    @override
   void initState() {
     super.initState();
+    verifyController = controllers.codeController;
     verifyController.addListener(_changeButtonState);
   }
 
@@ -61,6 +62,7 @@ class _VerifyScreenState extends State<VerifyScreen> {
             OsaSignInput(controller: verifyController, hint: 'code'),
             SizedBox(height: 20),
             OsaSignButton(doSomething: _sendVerify, labelText: 'Submit'),
+            SizedBox(height: 20),
           ],
         ),
       ),
