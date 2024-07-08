@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sign_window/widgets/screens/sign_in/login_screen.dart';
 
 import '../../osa_sign_button.dart';
 import '../../osa_sign_input.dart';

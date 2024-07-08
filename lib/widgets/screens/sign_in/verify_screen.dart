@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:sign_window/requests/check_verify_code.dart';
 
 import '../../osa_sign_button.dart';
 import '../../osa_sign_input.dart';
 import '../../osa_sign_title.dart';
+import '../../../main.dart';
+import '../../screens/sign_in/login_screen.dart';
 
 const columnPadding = 40.0;
 
@@ -14,9 +17,27 @@ class VerifyScreen extends StatefulWidget {
 }
 
 class _VerifyScreenState extends State<VerifyScreen> {
-  final TextEditingController verifyController = TextEditingController();
-  void _sendVerify(){
+  final TextEditingController verifyController = controllers.codeController;
+  bool _buttonState = false;
+  bool _isCorrect = false;
+  void _sendVerify() async{
+    _isCorrect = await checkVerifyCode();
+    //TODO сделать по аналогии с паролем
+    (_isCorrect)
+    ? Navigator.push(context, MaterialPageRoute(builder: (context) => LogInScreen()))
+    : (){};
+  }
 
+   @override
+  void initState() {
+    super.initState();
+    verifyController.addListener(_changeButtonState);
+  }
+
+  void _changeButtonState() {
+    setState(() {
+      _buttonState = verifyController.text.isNotEmpty;
+    });
   }
 
   @override
