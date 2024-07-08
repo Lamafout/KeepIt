@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../osa_sign_title.dart';
-import '../osa_sign_icon.dart';
+import '../../osa_sign_title.dart';
+import '../../osa_sign_icon.dart';
 
 const double gap = 20.0;
 const columnPadding = 40.0;

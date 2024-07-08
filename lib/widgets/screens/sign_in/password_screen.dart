@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../osa_sign_button.dart';
-import '../osa_sign_input.dart';
-import '../osa_sign_title.dart';
+import '../../osa_sign_button.dart';
+import '../../osa_sign_input.dart';
+import '../../osa_sign_title.dart';
 
 // consts of sizes of params of widgets
 const columnPadding = 40.0;

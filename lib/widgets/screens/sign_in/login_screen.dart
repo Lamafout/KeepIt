@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../osa_sign_button.dart';
-import '../osa_sign_input.dart';
-import '../osa_sign_title.dart';
-import '../../requests/username_request.dart';
-import './password_screen.dart';
-import './networks_screen.dart';
+import '../../osa_sign_button.dart';
+import '../../osa_sign_input.dart';
+import '../../osa_sign_title.dart';
+import '../../../requests/username_request.dart';
+import 'password_screen.dart';
+import 'networks_screen.dart';
 
 // consts of sizes of params of widgets
 const columnPadding = 40.0;
@@ -20,7 +20,7 @@ class LogInScreen extends StatefulWidget {
 class _LogInScreenState extends State<LogInScreen> {
   TextEditingController loginController = TextEditingController();
   bool buttonState = false;
-  bool isFound = false;
+  int isFound = 0;
 
   @override
   void initState() {
@@ -43,9 +43,9 @@ class _LogInScreenState extends State<LogInScreen> {
 
   void _sendUsername() async {
     isFound = await sendUsername(inputUsername: loginController.text);
-    if (isFound){
+    if (isFound == 1){
       Navigator.push(context, MaterialPageRoute(builder: (context) => PasswordScreen()));
-    } else{
+    } else if(isFound == 2){
       Navigator.push(context, MaterialPageRoute(builder: (context) => NetworksScreen()));
     }
   }
