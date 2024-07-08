@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
+import '../../../main.dart';
 import '../../osa_sign_button.dart';
 import '../../osa_sign_input.dart';
 import '../../osa_sign_title.dart';
 import '../../../requests/username_request.dart';
-import 'password_screen.dart';
+import 'check_password_screen.dart';
 import 'networks_screen.dart';
 
 // consts of sizes of params of widgets
@@ -18,7 +19,7 @@ class LogInScreen extends StatefulWidget {
 }
 
 class _LogInScreenState extends State<LogInScreen> {
-  TextEditingController loginController = TextEditingController();
+  TextEditingController loginController = controllers.usernameController;
   bool buttonState = false;
   int isFound = 0;
 
@@ -26,13 +27,6 @@ class _LogInScreenState extends State<LogInScreen> {
   void initState() {
     super.initState();
     loginController.addListener(_changeButtonState);
-  }
-
-  @override
-  void dispose() {
-    loginController.removeListener(_changeButtonState);
-    loginController.dispose();
-    super.dispose();
   }
 
   void _changeButtonState() {
