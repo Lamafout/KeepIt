@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
 
 import '../../osa_sign_button.dart';
 import '../../osa_sign_input.dart';
@@ -29,10 +30,10 @@ class _PasswordScreenState extends State<PasswordScreen> with TickerProviderStat
     if (isCorrect) {
       Navigator.pop(context);
     } else {
-      setState(() {
-        passwordController.text = '';
-      });
       passwordAnimationController.forward();
+      setState(() {
+        var timer = Timer(Duration(milliseconds: 100), () => passwordController.text =''); 
+      });
     }
   }
 
@@ -43,10 +44,10 @@ class _PasswordScreenState extends State<PasswordScreen> with TickerProviderStat
     passwordController.addListener(_changeButtonState);
     passwordAnimationController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 70),
     );
     _animation = Tween<double>(begin: 0, end: 24)
-        .chain(CurveTween(curve: Curves.elasticIn))
+        .chain(CurveTween(curve: Curves.linear))
         .animate(passwordAnimationController)
       ..addStatusListener((status) {
         if (status == AnimationStatus.completed) {
