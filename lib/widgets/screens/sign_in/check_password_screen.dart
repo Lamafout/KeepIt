@@ -32,7 +32,7 @@ class _PasswordScreenState extends State<PasswordScreen> with TickerProviderStat
     } else {
       passwordAnimationController.forward();
       setState(() {
-        var timer = Timer(Duration(milliseconds: 100), () => passwordController.text =''); 
+        var timer = Timer(Duration(milliseconds: 300), () => passwordController.text =''); 
       });
     }
   }
@@ -44,14 +44,23 @@ class _PasswordScreenState extends State<PasswordScreen> with TickerProviderStat
     passwordController.addListener(_changeButtonState);
     passwordAnimationController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 70),
+      duration: const Duration(milliseconds: 300),
     );
-    _animation = Tween<double>(begin: 0, end: 24)
-        .chain(CurveTween(curve: Curves.linear))
-        .animate(passwordAnimationController)
+    _animation = TweenSequence([
+          TweenSequenceItem(
+            tween: Tween<double>(begin: 0, end: 24).chain(CurveTween(curve: Curves.linear)), 
+            weight: 1),
+          TweenSequenceItem(
+            tween: Tween<double>(begin: 24, end: -24).chain(CurveTween(curve: Curves.linear)), 
+            weight: 1),
+          TweenSequenceItem(
+            tween: Tween<double>(begin: -24, end: 0).chain(CurveTween(curve: Curves.linear)), 
+            weight: 1),
+      ])
+      .animate(passwordAnimationController)
       ..addStatusListener((status) {
         if (status == AnimationStatus.completed) {
-          passwordAnimationController.reverse();
+          passwordAnimationController.reset();
         }
       });
   }
