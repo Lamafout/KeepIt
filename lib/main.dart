@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sign_window/widgets/screens/sign_in/start_work_screen.dart';
 
 import 'widgets/screens/sign_in/login_screen.dart';
 import 'package:sign_window/widgets/screens/sign_in/check_password_screen.dart';
@@ -32,7 +33,7 @@ class _CoreWidgetState extends State<CoreWidget> {
   Widget build(BuildContext context) {
     return MaterialApp(
       
-      home: LogInScreen(),
+      home: StartWorkScreen(),
     );
   }
 }
