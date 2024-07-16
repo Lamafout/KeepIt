@@ -33,7 +33,7 @@ class _CoreWidgetState extends State<CoreWidget> {
   Widget build(BuildContext context) {
     return MaterialApp(
       
-      home: StartWorkScreen(),
+      home: LogInScreen(),
     );
   }
 }

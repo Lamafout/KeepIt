@@ -5,6 +5,7 @@ import '../../osa_sign_button.dart';
 import '../../osa_sign_input.dart';
 import '../../osa_sign_title.dart';
 import '../../../main.dart';
+import '../sign_in/start_work_screen.dart';
 
 import '../../../requests/check_password.dart';
 
@@ -28,7 +29,7 @@ class _PasswordScreenState extends State<PasswordScreen> with TickerProviderStat
   void _sendPassword() async {
     isCorrect = await checkPassword();
     if (isCorrect) {
-      Navigator.pop(context);
+      Navigator.push(context, MaterialPageRoute(builder: (context) => StartWorkScreen()));
     } else {
       passwordAnimationController.forward();
       setState(() {
