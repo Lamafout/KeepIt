@@ -5,8 +5,10 @@ import 'widgets/screens/sign_in/login_screen.dart';
 import 'package:sign_window/widgets/screens/sign_in/check_password_screen.dart';
 import 'widgets/screens/sign_in/networks_screen.dart';
 import 'classes/text_controllers.dart';
+import 'classes/about_session.dart';
 
 final controllers = TextControllers();
+final sessionInfo = SessionInfo(isFind: false, isTimeUp: false);
 
 void main() {
   runApp(const MyApp());

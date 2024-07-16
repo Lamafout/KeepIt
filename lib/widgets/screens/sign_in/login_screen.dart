@@ -39,8 +39,10 @@ class _LogInScreenState extends State<LogInScreen> {
   void _sendUsername() async {
     isFound = await sendUsername(inputUsername: loginController.text);
     if (isFound == 1){
+      sessionInfo.isFind = true;
       Navigator.push(context, MaterialPageRoute(builder: (context) => PasswordScreen()));
     } else if(isFound == 2){
+      sessionInfo.isFind = false;
       Navigator.push(context, MaterialPageRoute(builder: (context) => NetworksScreen()));
     }
   }
