@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../classes/user.dart';
+import '../../osa_note_card.dart';
 
 class ApplicationScreen extends StatefulWidget {
   final User user;
@@ -19,8 +20,7 @@ class _ApplicationScreenState extends State<ApplicationScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Text('Я помню'),
-            Text('а хотя нет, не помню')
+            OsaNoteCard(text: 'Hello', picture: '', ico:''),
           ],
         ),
       ),

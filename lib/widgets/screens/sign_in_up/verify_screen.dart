@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:sign_window/requests/check_verify_code.dart';
+import 'package:sign_window/widgets/screens/sign_in_up/start_work_screen.dart';
 
 import '../../osa_sign_button.dart';
 import '../../osa_sign_input.dart';
 import '../../osa_sign_title.dart';
 import '../../../main.dart';
-import 'login_screen.dart';
 
 const columnPadding = 40.0;
 
@@ -24,7 +24,7 @@ class _VerifyScreenState extends State<VerifyScreen> {
     _isCorrect = await checkVerifyCode();
     //TODO сделать по аналогии с паролем
     (_isCorrect)
-    ? Navigator.push(context, MaterialPageRoute(builder: (context) => LogInScreen()))
+    ? Navigator.push(context, MaterialPageRoute(builder: (context) => const StartWorkScreen()))
     : (){};
   }
 
@@ -44,25 +44,25 @@ class _VerifyScreenState extends State<VerifyScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 28, 28, 28),
+      backgroundColor: const Color.fromARGB(255, 28, 28, 28),
        appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 28, 28, 28),
-        iconTheme: IconThemeData(
+        backgroundColor: const Color.fromARGB(255, 28, 28, 28),
+        iconTheme: const IconThemeData(
           color: Colors.white
         ),
       ),
       body: Container(
-        padding: EdgeInsets.all(columnPadding),
+        padding: const EdgeInsets.all(columnPadding),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
         
           children: [
             OsaSignTitle(titleText: 'Enter your verify code 📫'),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             OsaSignInput(controller: verifyController, hint: 'code'),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             OsaSignButton(doSomething: _sendVerify, labelText: 'Submit'),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
           ],
         ),
       ),
