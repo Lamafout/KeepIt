@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:sign_window/widgets/screens/sign_in/start_work_screen.dart';
+import 'package:sign_window/widgets/screens/sign_in_up/start_work_screen.dart';
 
-import 'widgets/screens/sign_in/login_screen.dart';
-import 'package:sign_window/widgets/screens/sign_in/check_password_screen.dart';
-import 'widgets/screens/sign_in/networks_screen.dart';
+import 'widgets/screens/sign_in_up/login_screen.dart';
+import 'package:sign_window/widgets/screens/sign_in_up/check_password_screen.dart';
+import 'widgets/screens/sign_in_up/networks_screen.dart';
 import 'classes/text_controllers.dart';
 import 'classes/about_session.dart';
 

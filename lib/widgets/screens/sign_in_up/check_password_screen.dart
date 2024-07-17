@@ -5,7 +5,7 @@ import '../../osa_sign_button.dart';
 import '../../osa_sign_input.dart';
 import '../../osa_sign_title.dart';
 import '../../../main.dart';
-import '../sign_in/start_work_screen.dart';
+import 'start_work_screen.dart';
 
 import '../../../requests/check_password.dart';
 

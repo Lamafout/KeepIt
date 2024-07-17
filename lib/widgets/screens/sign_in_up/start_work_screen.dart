@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import '../../osa_sign_button.dart';
 import '../../osa_sign_title.dart';
 import '../app/application.dart';
+import '../../../main.dart';
+import '../../../requests/signin.dart';
+import '../../../requests/signup.dart';
+import '../../../classes/user.dart';
 
 const columnPadding = 40.0;
 
@@ -14,8 +18,10 @@ class StartWorkScreen extends StatefulWidget {
 }
 
 class _StartWorkScreenState extends State<StartWorkScreen> {
-  void _startWork(){
-    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => ApplicationScreen()), (Route<dynamic> route) => false);
+  void _startWork() async{
+    late User user;
+    sessionInfo.isFind ? user = await signIn() : user = await signUp();
+    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => ApplicationScreen(user: user)), (Route<dynamic> route) => false);
   }
 
   @override

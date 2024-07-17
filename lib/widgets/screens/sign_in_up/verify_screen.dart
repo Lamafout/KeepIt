@@ -5,7 +5,7 @@ import '../../osa_sign_button.dart';
 import '../../osa_sign_input.dart';
 import '../../osa_sign_title.dart';
 import '../../../main.dart';
-import '../../screens/sign_in/login_screen.dart';
+import 'login_screen.dart';
 
 const columnPadding = 40.0;
 

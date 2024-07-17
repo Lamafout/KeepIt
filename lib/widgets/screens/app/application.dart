@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
+import '../../../classes/user.dart';
+
 class ApplicationScreen extends StatefulWidget {
-  const ApplicationScreen({super.key});
+  final User user;
+
+  ApplicationScreen({required this.user});
 
   @override
   State<ApplicationScreen> createState() => _ApplicationScreenState();

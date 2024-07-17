@@ -6,7 +6,7 @@ import '../classes/user.dart';
 
 const defaultPath = 'https/keep-it.mark-anikin.ru';
 
-Future<User> signIn() async{
+Future<User> signUp() async{
   final uri = Uri.parse('$defaultPath/api/users/signup');
 
   final response = await http.post(
