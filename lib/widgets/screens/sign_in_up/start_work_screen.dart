@@ -19,9 +19,8 @@ class StartWorkScreen extends StatefulWidget {
 
 class _StartWorkScreenState extends State<StartWorkScreen> {
   void _startWork() async{
-    late User user;
-    sessionInfo.isFind ? user = await signIn() : user = await signUp();
-    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => ApplicationScreen(user: user)), (Route<dynamic> route) => false);
+    sessionInfo.isFind ? sessionInfo.currentUser = await signIn() : sessionInfo.currentUser = await signUp();
+    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => ApplicationScreen()), (Route<dynamic> route) => false);
   }
 
   @override
