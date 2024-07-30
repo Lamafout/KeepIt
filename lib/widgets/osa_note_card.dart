@@ -13,19 +13,18 @@ class OsaNoteCard extends StatelessWidget {
   final String picture;
   final String source;
   final String svg;
+  int _limit = 30; //начальный лимит символов
 
-  const OsaNoteCard({required this.text, required this.picture, required this.source, required this.svg});
-
-  IconData getIconByName(String name){
-    switch (name){
-      case 'app': return FontAwesomeIcons.userNinja;
-      case 'telegram': return FontAwesomeIcons.telegram;
-      case 'instagram': return FontAwesomeIcons.instagram;
-      case 'vk': return FontAwesomeIcons.vk;
-      case 'wiki': return FontAwesomeIcons.wikipediaW;
-      default: return FontAwesomeIcons.a;
+  bool _checkAndUpLimit(String picStr){
+    if (picStr.isNotEmpty){
+      _limit *= 2;
+      return true;
     }
+    else return false;
   }
+
+  OsaNoteCard({required this.text, required this.picture, required this.source, required this.svg});
+
   String upperFirstLetter(String text){ 
     return text.substring(0, 1).toUpperCase() + text.substring(1);
   }
@@ -109,10 +108,31 @@ class OsaNoteCard extends StatelessWidget {
               ),
 
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-
+                  ...{ 
+                      if (_checkAndUpLimit(picture))...{
+                        Container(
+                          width: 100,
+                          height: 100,
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(20)), 
+                          ),
+                          child: Image.network(
+                            picture,
+                            // TODO картинка не подстаривается под углы контейнера
+                            fit: BoxFit.scaleDown,
+                          ),
+                        ),
+                        SizedBox(width: cardHeaderPadding,),
+                        }
+                      },
+                  Text(
+                    text, 
+                    style: const TextStyle(
+                      color: Colors.white
+                    ),
+                  ),
                 ],
               ),
             )
