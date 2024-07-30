@@ -1,7 +1,7 @@
 // TODO сделать изображение с помощью виджета из пакета с кэшем
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:iconify_flutter/iconify_flutter.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 //TODO нужно будет переработать, так как источник может быть разный, в том числе и само 
 //приложение - тогда отображать текст заголовка вместо источника внутри стороннего приложения
@@ -12,8 +12,9 @@ class OsaNoteCard extends StatelessWidget {
   final String text;
   final String picture;
   final String source;
+  final String svg;
 
-  const OsaNoteCard({required this.text, required this.picture, required this.source});
+  const OsaNoteCard({required this.text, required this.picture, required this.source, required this.svg});
 
   IconData getIconByName(String name){
     switch (name){
@@ -24,6 +25,9 @@ class OsaNoteCard extends StatelessWidget {
       case 'wiki': return FontAwesomeIcons.wikipediaW;
       default: return FontAwesomeIcons.a;
     }
+  }
+  String upperFirstLetter(String text){ 
+    return text.substring(0, 1).toUpperCase() + text.substring(1);
   }
 
   @override
@@ -36,15 +40,19 @@ class OsaNoteCard extends StatelessWidget {
         color: Colors.transparent,
         border: Border(
           top: BorderSide(
+            width: 0.5,
             color: Colors.white,
           ),
           bottom: BorderSide(
+            width: 0.5,
             color: Colors.white,
           ),
           left: BorderSide(
+            width: 0.5,
             color: Colors.white,
           ),
           right: BorderSide(
+            width: 0.5,
             color: Colors.white,
           )
         )
@@ -61,6 +69,7 @@ class OsaNoteCard extends StatelessWidget {
               decoration: const BoxDecoration(
                 border: Border(
                   bottom: BorderSide(
+                    width: 0.5,
                     color: Colors.white
                   ),
                 )
@@ -71,13 +80,15 @@ class OsaNoteCard extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      FaIcon(
-                        getIconByName(source),
+                      SvgPicture.string(
+                        svg,
                         color: Colors.white,
+                        height: 30,
+                        width: 30,
                       ),
                       SizedBox(width: cardHeaderPadding,),
                       Text(
-                        source,
+                        upperFirstLetter(source),
                         style: const TextStyle(
                           color: Colors.white,
                         ),
