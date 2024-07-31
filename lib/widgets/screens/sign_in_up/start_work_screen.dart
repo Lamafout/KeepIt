@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../osa_sign_button.dart';
 import '../../osa_sign_title.dart';
-import '../app/application.dart';
+import '../app/new_notes.dart';
 import '../../../main.dart';
 import '../../../requests/signin.dart';
 import '../../../requests/signup.dart';
@@ -20,7 +20,7 @@ class StartWorkScreen extends StatefulWidget {
 class _StartWorkScreenState extends State<StartWorkScreen> {
   void _startWork() async{
     sessionInfo.isFind ? sessionInfo.currentUser = await signIn() : sessionInfo.currentUser = await signUp();
-    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => ApplicationScreen()), (Route<dynamic> route) => false);
+    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => NewNotesScreen()), (Route<dynamic> route) => false);
   }
 
   @override

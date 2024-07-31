@@ -7,7 +7,7 @@ import 'classes/text_controllers.dart';
 import 'classes/about_session.dart';
 
 //TODO временный импорт, удалить, когда будет возможность тестить с сервера
-import 'widgets/screens/app/application.dart';
+import 'widgets/screens/app/new_notes.dart';
 
 final controllers = TextControllers();
 final sessionInfo = SessionInfo(isFind: false, isTimeUp: false, currentUser: User.empty());
@@ -36,7 +36,7 @@ class _CoreWidgetState extends State<CoreWidget> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: ApplicationScreen(),
+      home: NewNotesScreen(),
       // home: LogInScreen(),
     );
   }
