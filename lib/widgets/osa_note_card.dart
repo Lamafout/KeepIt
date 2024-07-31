@@ -38,119 +38,123 @@ class OsaNoteCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 200.0,
-      width: double.infinity * 0.7,
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(20)),
-        color: Colors.transparent,
-        border: Border(
-          top: BorderSide(
-            width: 0.5,
-            color: Colors.white,
-          ),
-          bottom: BorderSide(
-            width: 0.5,
-            color: Colors.white,
-          ),
-          left: BorderSide(
-            width: 0.5,
-            color: Colors.white,
-          ),
-          right: BorderSide(
-            width: 0.5,
-            color: Colors.white,
+    return InkWell(
+      borderRadius: const BorderRadius.all(Radius.circular(20)),
+      onTap: (){},
+      child: Container(
+        height: 200.0,
+        width: double.infinity * 0.7,
+        decoration: const BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(20)),
+          color: Colors.transparent,
+          border: Border(
+            top: BorderSide(
+              width: 0.5,
+              color: Colors.white,
+            ),
+            bottom: BorderSide(
+              width: 0.5,
+              color: Colors.white,
+            ),
+            left: BorderSide(
+              width: 0.5,
+              color: Colors.white,
+            ),
+            right: BorderSide(
+              width: 0.5,
+              color: Colors.white,
+            )
           )
-        )
-      ),
-
-        child: Column(
-          children: [
-            // header
-            Container(
-              padding: const EdgeInsets.symmetric(
-                horizontal: cardHeaderPadding,
-                vertical: cardHeaderPadding * 0.7
+        ),
+      
+          child: Column(
+            children: [
+              // header
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: cardHeaderPadding,
+                  vertical: cardHeaderPadding * 0.7
+                ),
+                decoration: const BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(
+                      width: 0.5,
+                      color: Colors.white
+                    ),
+                  )
+                ),
+                child: Row(        
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        SvgPicture.string(
+                          svg,
+                          color: Colors.white,
+                          height: 30,
+                          width: 30,
+                        ),
+                        SizedBox(width: cardHeaderPadding,),
+                        Text(
+                          upperFirstLetter(source),
+                          style: const TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                
+                    FaIcon(FontAwesomeIcons.spaghettiMonsterFlying, color: Colors.white,)
+                  ],
+                ),
               ),
-              decoration: const BoxDecoration(
-                border: Border(
-                  bottom: BorderSide(
-                    width: 0.5,
-                    color: Colors.white
-                  ),
-                )
-              ),
-              child: Row(        
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      SvgPicture.string(
-                        svg,
-                        color: Colors.white,
-                        height: 30,
-                        width: 30,
-                      ),
-                      SizedBox(width: cardHeaderPadding,),
-                      Text(
-                        upperFirstLetter(source),
+      
+              // text and picture
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: cardHeaderPadding,
+                  vertical: cardHeaderPadding * 0.7
+                ),
+      
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    ...{ 
+                        if (_checkAndUpLimit(picture))...{
+                          Container(
+                            width: 100,
+                            height: 100,
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(20)), 
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.all(Radius.circular(20)),
+                              child: Image.network(
+                                picture,
+                                fit: BoxFit.scaleDown,
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: cardHeaderPadding,),
+                          }
+                        },
+                    Container(
+                      width: 180,
+                      child: Text(
+                        _cutTextToLimit(text), 
                         style: const TextStyle(
                           color: Colors.white,
                         ),
+                        softWrap: true,
                       ),
-                    ],
-                  ),
-              
-                  FaIcon(FontAwesomeIcons.spaghettiMonsterFlying, color: Colors.white,)
-                ],
-              ),
-            ),
-
-            // text and picture
-            Container(
-              padding: const EdgeInsets.symmetric(
-                horizontal: cardHeaderPadding,
-                vertical: cardHeaderPadding * 0.7
-              ),
-
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  ...{ 
-                      if (_checkAndUpLimit(picture))...{
-                        Container(
-                          width: 100,
-                          height: 100,
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(20)), 
-                          ),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            child: Image.network(
-                              picture,
-                              fit: BoxFit.scaleDown,
-                            ),
-                          ),
-                        ),
-                        SizedBox(width: cardHeaderPadding,),
-                        }
-                      },
-                  Container(
-                    width: 180,
-                    child: Text(
-                      _cutTextToLimit(text), 
-                      style: const TextStyle(
-                        color: Colors.white,
-                      ),
-                      softWrap: true,
                     ),
-                  ),
-                ],
-              ),
-            )
-          ],
-        ),
+                  ],
+                ),
+              )
+            ],
+          ),
+      ),
     );
   }
 }
