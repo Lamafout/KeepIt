@@ -41,8 +41,8 @@ class OsaNoteCard extends StatelessWidget {
     return Material(
       color: Colors.transparent,
       child: InkWell(
-        borderRadius: BorderRadius.all(Radius.circular(20)),
-        onTap: (){print('SOME SOME SOME SOME SOME SOME SOME');},
+        borderRadius: const BorderRadius.all(Radius.circular(20)),
+        onTap: (){},
         child: Ink(
           height: 200.0,
           width: double.infinity * 0.7,
@@ -107,7 +107,7 @@ class OsaNoteCard extends StatelessWidget {
                         ],
                       ),
                   
-                      FaIcon(FontAwesomeIcons.spaghettiMonsterFlying, color: Colors.white,)
+                      const FaIcon(FontAwesomeIcons.dragon, color: Colors.white,)
                     ],
                   ),
                 ),

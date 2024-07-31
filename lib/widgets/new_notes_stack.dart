@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_tindercard_plus/flutter_tindercard_plus.dart';
 import './osa_note_card.dart';
 
 class NewNotesList extends StatefulWidget {
@@ -14,35 +14,31 @@ class NewNotesList extends StatefulWidget {
 class _NewNotesListState extends State<NewNotesList> {
   @override
   Widget build(BuildContext context) {
-    if (widget.cards == null || widget.cards.isEmpty) {
-      return Center(
-        child: Text(
-          'No notes available',
-          style: TextStyle(color: Colors.white),
-        ),
-      );
-    }
-
     return Container(
       width: double.infinity,
       height: 700,
-      child: Stack(
-        children: [
-          // ...widget.cards.asMap().entries.map((entry) {
-          //   int index = entry.key;
-          //   OsaNoteCard card = entry.value;
-          //   return Positioned(
-          //     top: 10 * index.toDouble(),
-          //     child: card,
-          //   );
-          // }).toList(),
-          ...widget.cards.asMap().entries.map((entry) {
-            return Container(
-              margin: EdgeInsets.only(top: 10*entry.key.toDouble()),
-              child: entry.value,
-            );
-          })
-        ],
+      //TODO исправить краш, пока не понимаю сути проблемы
+      child: TinderSwapCard(
+        totalNum: widget.cards.length,
+        stackNum: 5,
+        swipeUp: false,
+        swipeDown: false,
+        cardBuilder: (context, index) => widget.cards[index],
+        swipeCompleteCallback: (CardSwipeOrientation orientation, int index) {
+          setState(() {
+            widget.cards.removeAt(index);
+          });
+        },
+        // child: Stack(
+        //   children: [
+        //     ...widget.cards.reversed.toList().asMap().entries.map((entry) {
+        //       return Container(
+        //         margin: EdgeInsets.only(top: 10*entry.key.toDouble()),
+        //         child: entry.value,
+        //       );
+        //     })
+        //   ],
+        // ),
       ),
     );
   }
