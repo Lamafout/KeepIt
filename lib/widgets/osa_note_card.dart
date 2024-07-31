@@ -13,21 +13,28 @@ class OsaNoteCard extends StatelessWidget {
   final String picture;
   final String source;
   final String svg;
-  int _limit = 30; //начальный лимит символов
+  int _limit = 200; //начальный лимит символов
 
   bool _checkAndUpLimit(String picStr){
     if (picStr.isNotEmpty){
-      _limit *= 2;
+      _limit = (_limit / 2).round();
       return true;
     }
     else return false;
   }
 
-  OsaNoteCard({required this.text, required this.picture, required this.source, required this.svg});
-
   String upperFirstLetter(String text){ 
     return text.substring(0, 1).toUpperCase() + text.substring(1);
   }
+
+  String _cutTextToLimit(String text){
+    if (text.length > _limit){
+      return text.substring(0, _limit) + '...';
+    }
+    else return text;
+  }
+
+  OsaNoteCard({required this.text, required this.picture, required this.source, required this.svg});
 
   @override
   Widget build(BuildContext context) {
@@ -129,10 +136,14 @@ class OsaNoteCard extends StatelessWidget {
                         SizedBox(width: cardHeaderPadding,),
                         }
                       },
-                  Text(
-                    text, 
-                    style: const TextStyle(
-                      color: Colors.white
+                  Container(
+                    width: 180,
+                    child: Text(
+                      _cutTextToLimit(text), 
+                      style: const TextStyle(
+                        color: Colors.white,
+                      ),
+                      softWrap: true,
                     ),
                   ),
                 ],
