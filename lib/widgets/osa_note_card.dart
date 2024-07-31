@@ -41,6 +41,7 @@ class OsaNoteCard extends StatelessWidget {
     return InkWell(
       borderRadius: const BorderRadius.all(Radius.circular(20)),
       onTap: (){},
+      //TODO сделать фон не прозрачным, так как при наложении выглядит не ахти
       child: Container(
         height: 200.0,
         width: double.infinity * 0.7,
