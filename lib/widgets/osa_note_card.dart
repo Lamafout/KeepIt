@@ -118,10 +118,12 @@ class OsaNoteCard extends StatelessWidget {
                           decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(20)), 
                           ),
-                          child: Image.network(
-                            picture,
-                            // TODO картинка не подстаривается под углы контейнера
-                            fit: BoxFit.scaleDown,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            child: Image.network(
+                              picture,
+                              fit: BoxFit.scaleDown,
+                            ),
                           ),
                         ),
                         SizedBox(width: cardHeaderPadding,),

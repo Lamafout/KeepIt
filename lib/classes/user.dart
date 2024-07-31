@@ -21,4 +21,11 @@ class User{
 
   //constructor 
   User(this._id, this._username, this._tg, this._email, this._avatar);
+  User.empty(){
+    this._id = -1;
+    this._username = '';
+    this._tg = '';
+    this._email = '';
+    this._avatar = '';
+  }
 }

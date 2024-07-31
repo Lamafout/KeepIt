@@ -3,8 +3,6 @@ import 'package:sign_window/classes/user.dart';
 import 'package:sign_window/widgets/screens/sign_in_up/start_work_screen.dart';
 
 import 'widgets/screens/sign_in_up/login_screen.dart';
-import 'package:sign_window/widgets/screens/sign_in_up/check_password_screen.dart';
-import 'widgets/screens/sign_in_up/networks_screen.dart';
 import 'classes/text_controllers.dart';
 import 'classes/about_session.dart';
 
@@ -12,7 +10,7 @@ import 'classes/about_session.dart';
 import 'widgets/screens/app/application.dart';
 
 final controllers = TextControllers();
-final sessionInfo = SessionInfo(isFind: false, isTimeUp: false, currentUser: User(-1, '', '', '', ''));
+final sessionInfo = SessionInfo(isFind: false, isTimeUp: false, currentUser: User.empty());
 
 void main() {
   runApp(const MyApp());
