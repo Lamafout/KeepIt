@@ -16,16 +16,20 @@ class _NewNotesListState extends State<NewNotesList> {
     return Container(
       width: double.infinity,
       height: 700,
-      //TODO вернутсья на использование стека и анимированного контейнера
       child: Stack(
           children: [
             ...widget.cards.reversed.toList().asMap().entries.map((entry) {
-              return entry.key == 0
-              ? Draggable(
-                feedback: Container(
-                  margin: EdgeInsets.only(top: 10*entry.key.toDouble()),
-                  child: entry.value,
-                  ),
+              return entry.key == widget.cards.length - 1
+              ? Dismissible(
+                key: Key(entry.hashCode.toString()),
+                direction: DismissDirection.horizontal,
+                onDismissed: (direction) {
+                  setState(() {
+                    print(widget.cards.length);
+                    widget.cards.removeAt(widget.cards.length - entry.key - 1);
+                    print(widget.cards.length);
+                  });
+                },
                 child: Container(
                   margin: EdgeInsets.only(top: 10*entry.key.toDouble()),
                   child: entry.value,
