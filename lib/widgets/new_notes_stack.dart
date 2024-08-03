@@ -25,9 +25,7 @@ class _NewNotesListState extends State<NewNotesList> {
                 direction: DismissDirection.horizontal,
                 onDismissed: (direction) {
                   setState(() {
-                    print(widget.cards.length);
                     widget.cards.removeAt(widget.cards.length - entry.key - 1);
-                    print(widget.cards.length);
                   });
                 },
                 child: Container(
