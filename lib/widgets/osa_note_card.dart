@@ -97,7 +97,7 @@ class OsaNoteCard extends StatelessWidget {
                             height: 30,
                             width: 30,
                           ),
-                          SizedBox(width: cardHeaderPadding,),
+                          const SizedBox(width: cardHeaderPadding,),
                           Text(
                             upperFirstLetter(source),
                             style: const TextStyle(
@@ -141,15 +141,17 @@ class OsaNoteCard extends StatelessWidget {
                             SizedBox(width: cardHeaderPadding,),
                             }
                           },
-                      Container(
-                        width: 180,
-                        child: Text(
-                          _cutTextToLimit(text), 
-                          style: const TextStyle(
-                            color: Colors.white,
+                      Expanded(
+                        child: FractionallySizedBox(
+                          widthFactor: 0.8,
+                          child: Text(
+                            _cutTextToLimit(text), 
+                            style: const TextStyle(
+                              color: Colors.white,
+                            ),
+                            softWrap: true,
                           ),
-                          softWrap: true,
-                        ),
+                        ), 
                       ),
                     ],
                   ),

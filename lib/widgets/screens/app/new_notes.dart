@@ -31,7 +31,6 @@ class _NewNotesScreenState extends State<NewNotesScreen> {
           ),
         ),
       ),
-      //TODO на макете карточки реализваоны в виде стопки, а не в виде списка. Найти способ реализации.
       body: SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.symmetric(
