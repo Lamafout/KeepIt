@@ -20,18 +20,7 @@ class NewNotesScreen extends StatefulWidget {
 class _NewNotesScreenState extends State<NewNotesScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color.fromARGB(255, 28, 28, 28),
-      appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 28, 28, 28),
-        title: Text(
-          'Last notes',
-          style: TextStyle(
-            color: Colors.white,
-          ),
-        ),
-      ),
-      body: SingleChildScrollView(
+    return SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.symmetric(
             horizontal: contentPadding,
@@ -49,7 +38,6 @@ class _NewNotesScreenState extends State<NewNotesScreen> {
             ],
           ),
         ),
-      ),
-    );
+      );
   }
 }
