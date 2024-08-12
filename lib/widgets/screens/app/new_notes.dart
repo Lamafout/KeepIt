@@ -17,9 +17,13 @@ class NewNotesScreen extends StatefulWidget {
   State<NewNotesScreen> createState() => _NewNotesScreenState();
 }
 
-class _NewNotesScreenState extends State<NewNotesScreen> {
+class _NewNotesScreenState extends State<NewNotesScreen> with AutomaticKeepAliveClientMixin{
+  @override
+  get wantKeepAlive => true;
+  
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.symmetric(
