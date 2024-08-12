@@ -21,21 +21,21 @@ class _NewNotesListState extends State<NewNotesList> {
             ...widget.cards.reversed.toList().asMap().entries.map((entry) {
               return entry.key == widget.cards.length - 1
               ? Dismissible(
-                key: Key(entry.hashCode.toString()),
-                direction: DismissDirection.horizontal,
-                onDismissed: (direction) {
-                  setState(() {
-                    widget.cards.removeAt(widget.cards.length - entry.key - 1);
-                  });
-                },
-                child: Container(
-                  margin: EdgeInsets.only(top: 10*entry.key.toDouble()),
-                  child: entry.value,
-                  ), 
+                  key: Key(entry.hashCode.toString()),
+                  direction: DismissDirection.horizontal,
+                  onDismissed: (direction) {
+                    setState(() {
+                      widget.cards.removeAt(widget.cards.length - entry.key - 1);
+                    });
+                  },
+                  child: Container(
+                    margin: EdgeInsets.only(top: 10*entry.key.toDouble()),
+                    child: entry.value,
+                    ), 
                 )
               : Container(
-                margin: EdgeInsets.only(top: 10*entry.key.toDouble()),
-                child: entry.value,
+                  margin: EdgeInsets.only(top: 10*entry.key.toDouble()),
+                  child: entry.value,
                 );
             })
           ],

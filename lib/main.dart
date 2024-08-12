@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sign_window/classes/user.dart';
-import 'package:sign_window/widgets/screens/sign_in_up/start_work_screen.dart';
 
 import 'widgets/screens/sign_in_up/login_screen.dart';
 import 'classes/text_controllers.dart';
